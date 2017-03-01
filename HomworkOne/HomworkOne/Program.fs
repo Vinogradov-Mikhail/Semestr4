@@ -7,14 +7,14 @@ let value = factorial 3
 printfn "3! = %d" value
 
 //task 2
-let rec fibonacci x =
-    if x = 0 then  0
-    elif x = 1 then 1
-    else
-        fibonacci (x - 2) + fibonacci (x - 1)
+let fibonacci x =
+    let rec fibIter a b count =
+        if count = 0 then b
+        else fibIter (a + b) a (count - 1)
+    fibIter 1 0 x
 
 let thirdFibonacci = fibonacci 3
-printfn "fibonacci №3 = %d"  thirdFibonacci
+printfn "fibonacci №3 = %d"  thirdFibonacci        
 
 //task 3
 let reverse listx =
