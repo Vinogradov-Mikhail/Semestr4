@@ -1,4 +1,6 @@
 ﻿open FsCheck
+open NUnit.Framework
+open FsUnit
 
 let evenNumberOne list =
     List.length (List.filter (fun x -> x % 2 = 0) list)
@@ -21,6 +23,7 @@ let reference list =
 let testingFunctionOne x = 
     (reference x) = (evenNumberOne x)
 
+
 Check.QuickThrowOnFailure testingFunctionOne
 
 let testingFunctionTwo x =
@@ -32,3 +35,6 @@ let testingFunctionThree x =
     (reference x) = (evenNumberThree x)
 
 Check.QuickThrowOnFailure testingFunctionThree
+
+[<Test>]
+let  ``blblbl `` () = reference [1; 2; 3] |> should equal 2
