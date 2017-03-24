@@ -21,3 +21,7 @@ let rec claculate exp =
 [<Test>]
 let ``test of tre calculating`` () = 
     claculate <| Add(Number 5, Multiply(Number 4, Number 3)) |> should equal 17
+
+[<Test>]
+let ``test of tre calculating two`` () = 
+    claculate <| Division(Number 10, Multiply(Number 2, Number 1)) |> should equal 5
