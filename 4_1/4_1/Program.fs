@@ -1,5 +1,4 @@
-﻿open FsCheck
-open NUnit.Framework
+﻿open NUnit.Framework
 open FsUnit
 
 let evenNumberOne list =
@@ -11,30 +10,11 @@ let evenNumberTwo list =
 let evenNumberThree list = 
     (List.length list) - (List.sum (List.map (fun x -> (abs (x % 2))) list))
 
-let reference list =
-    let rec help acc listx =
-        match listx with
-        | [] -> acc
-        | head::tail -> 
-            if head % 2 = 0 then help (acc + 1) tail
-            else help acc tail
-    help 0 list
-
-let testingFunctionOne x = 
-    (reference x) = (evenNumberOne x)
-
-
-Check.QuickThrowOnFailure testingFunctionOne
-
-let testingFunctionTwo x =
-    (reference x) = (evenNumberTwo x)
-
-Check.QuickThrowOnFailure testingFunctionTwo
-
-let testingFunctionThree x =
-    (reference x) = (evenNumberThree x)
-
-Check.QuickThrowOnFailure testingFunctionThree
+[<Test>]
+let  ``check evenNumberOne `` () = evenNumberOne [1; 2; 3; 2] |> should equal 2
 
 [<Test>]
-let  ``blblbl `` () = reference [1; 2; 3] |> should equal 2
+let  ``check evenNumberTwo`` () = evenNumberTwo [1; 2; 3; 2] |> should equal 2
+
+[<Test>]
+let  ``check evenNumberThree `` () = evenNumberThree [1; 2; 3] |> should equal 1
