@@ -14,6 +14,9 @@ let rec fromStringToUser book list =
         let user = {Number = number ; Name = name}
         fromStringToUser (user :: book) tail
 
+let print list = 
+    List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) list
+
 let phoneBook =
     let rec interfac phoneBookList =
         printfn "1 - exit"
@@ -38,18 +41,18 @@ let phoneBook =
              printfn "Write name for search number"
              let name = Console.ReadLine()
              if List.exists (fun x -> x.Name = name) phoneBookList then
-                 List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Name = name) phoneBookList)
+                 print (List.filter (fun x -> x.Name = name) phoneBookList)
              else printfn "I`m sorry"
              interfac phoneBookList
         |"4" -> 
             printfn "Write number for search name"
             let number = Console.ReadLine()
             if List.exists (fun x -> x.Number = number) phoneBookList then
-                List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Number = number) phoneBookList)                
+                print (List.filter (fun x -> x.Number = number) phoneBookList)                
             else printfn "I`m sorry"
             interfac phoneBookList
         |"5" -> 
-            List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) phoneBookList
+            print phoneBookList
             interfac phoneBookList
         |"6" -> 
             IO.File.WriteAllLines("PhoneBook.txt", List.map (fun x -> x.Name + " " + x.Number) phoneBookList)
