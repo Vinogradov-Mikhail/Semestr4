@@ -12,5 +12,5 @@ let test =
         }
 
 [<Test>]
-let ``test from hwproj`` = 
+let ``test from hwproj`` () = 
     test |> should equal 0.048
