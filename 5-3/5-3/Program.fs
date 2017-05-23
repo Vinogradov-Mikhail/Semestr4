@@ -34,15 +34,15 @@ let phoneBook =
             let name = Console.ReadLine()
             let user = {Number = number ; Name = name}
             interfac (user :: phoneBookList)
-        |"4" ->
-             printfn "Write number for search name"
+        |"3" ->
+             printfn "Write name for search number"
              let name = Console.ReadLine()
              if List.exists (fun x -> x.Name = name) phoneBookList then
                  List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Name = name) phoneBookList)
              else printfn "I`m sorry"
              interfac phoneBookList
-        |"3" -> 
-            printfn "Write name for search number"
+        |"4" -> 
+            printfn "Write number for search name"
             let number = Console.ReadLine()
             if List.exists (fun x -> x.Number = number) phoneBookList then
                 List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Number = number) phoneBookList)                
