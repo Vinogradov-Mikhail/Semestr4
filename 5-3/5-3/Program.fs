@@ -16,27 +16,34 @@ let rec fromStringToUser book list =
 
 let phoneBook =
     let rec interfac phoneBookList =
+        printfn "1 - exit"
+        printfn "2 - add contact"
+        printfn "3 - search contact from name"
+        printfn "4 - search contact from number"
+        printfn "5 - print"
+        printfn "6 - create file"
+        printfn "7 - read from file"
         let x = System.Console.ReadLine()
         match x with
         |"1" -> 
             printfn "Bye"
         |"2" -> 
             printfn "Write number"
-            let number = System.Console.ReadLine()
+            let number = Console.ReadLine()
             printfn "Write name"
-            let name = System.Console.ReadLine()
+            let name = Console.ReadLine()
             let user = {Number = number ; Name = name}
             interfac (user :: phoneBookList)
-        |"3" ->
+        |"4" ->
              printfn "Write number for search name"
-             let name = System.Console.ReadLine()
+             let name = Console.ReadLine()
              if List.exists (fun x -> x.Name = name) phoneBookList then
                  List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Name = name) phoneBookList)
              else printfn "I`m sorry"
              interfac phoneBookList
-        |"4" -> 
+        |"3" -> 
             printfn "Write name for search number"
-            let number = System.Console.ReadLine()
+            let number = Console.ReadLine()
             if List.exists (fun x -> x.Number = number) phoneBookList then
                 List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) (List.filter (fun x -> x.Number = number) phoneBookList)                
             else printfn "I`m sorry"
@@ -45,14 +52,18 @@ let phoneBook =
             List.iter (fun x -> printfn "%A" <| x.Name + " " + x.Number ) phoneBookList
             interfac phoneBookList
         |"6" -> 
-            System.IO.File.WriteAllLines("PhoneBook.txt", List.map (fun x -> x.Name + " " + x.Number) phoneBookList)
+            IO.File.WriteAllLines("PhoneBook.txt", List.map (fun x -> x.Name + " " + x.Number) phoneBookList)
             printfn "File created"
             interfac phoneBookList
         |"7" -> 
-            let book = Seq.toList (System.IO.File.ReadLines("PhoneBook.txt"))
-            let newBook = fromStringToUser phoneBookList book
-            printfn "Read file succes" 
-            interfac newBook
+            if (IO.File.Exists("PhoneBook.txt")) then
+                let book = Seq.toList (IO.File.ReadLines("PhoneBook.txt"))
+                let newBook = fromStringToUser phoneBookList book
+                printfn "Read file succes" 
+                interfac newBook
+            else 
+                printfn "File not found" 
+                interfac phoneBookList
         |_ -> 
             printfn "Try another" 
             interfac phoneBookList
