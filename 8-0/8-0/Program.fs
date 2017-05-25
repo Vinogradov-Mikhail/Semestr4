@@ -1,6 +1,10 @@
-﻿open System.Net
+﻿module Program
+
+open System.Net
 open System.IO
 open System.Text.RegularExpressions
+
+let mutable testUrlList = []
 
 let paigeInfoDownloder(url : string) =
     let format = "<a href=(\"http://([^\"]*\")|\'[^\']*\')"
@@ -29,6 +33,7 @@ let paigeInfoDownloder(url : string) =
     let allHtml = seq {for uri in allPaiges ->
                         let reg = new Regex(format.Substring(9,24))
                         let html = reg.Match(uri.ToString()).ToString()
+                        testUrlList <- html::testUrlList
                         html.Substring(1, html.Length - 2) }
 
     allHtml 
@@ -36,5 +41,3 @@ let paigeInfoDownloder(url : string) =
     |> Async.Parallel 
     |> Async.RunSynchronously 
     |> ignore
-
-paigeInfoDownloder "http://hwproj.me/courses/20"
