@@ -1,10 +1,11 @@
-﻿module Main
+﻿module Test
 
-open System.Collections.Generic
 open Program
+open NUnit.Framework
+open FsUnit
 
-[<EntryPoint>]
-let main argv = 
+[<Test>]
+let ``test with 3 computers``() = 
     let mac = { NameOfOs = "Mac"; InfectionProbability = 10 }
     let windows = { NameOfOs = "Windows"; InfectionProbability = 80 }
     let linux = { NameOfOs = "Linux"; InfectionProbability = 40 }
@@ -25,4 +26,3 @@ let main argv =
                         { operatingSystem = mac;  Infected = true }]
     let network = new LocalNetwork(addComputers, createMat mat)
     network.VirusInfection()
-    0 // возвращение целочисленного кода выхода
