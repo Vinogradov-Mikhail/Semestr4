@@ -7,18 +7,21 @@ type OperatingSystems = { NameOfOs: string; InfectionProbability: int }
 
 type Computer = { operatingSystem: OperatingSystems; mutable Infected: bool }
 
-type LocalNetwork(newNetOfComp : List<Computer>, mat : bool[,])=
+/// <summary>
+///emulating work of local network with virus
+/// <summary>
+type LocalNetwork(newNetOfComp : list<Computer>, mat : bool[,])=
     let mutable rand = new Random()
     let mutable listOfAllComputersInNet = newNetOfComp
     let mutable matrixOfLink = mat
 
     member this.StepOfVirusInfection() =
             let listOfComputersInfectedInThisStep = new List<Computer>()
-            for i in 0 .. listOfAllComputersInNet.Count - 1 do
+            for i in 0 .. (List.length listOfAllComputersInNet) - 1 do
                 if (listOfAllComputersInNet.[i].Infected) then
-                    for j in 0 .. listOfAllComputersInNet.Count - 1 do
-                        if (matrixOfLink.[i,j] && (listOfAllComputersInNet.[j].Infected = false) && (listOfComputersInfectedInThisStep.Contains(listOfAllComputersInNet.[j]) = false)) then
-                            if(rand.Next(1, 100) <= listOfAllComputersInNet.[j].operatingSystem.InfectionProbability) then
+                    for j in 0 .. (List.length listOfAllComputersInNet) - 1 do
+                        if (matrixOfLink.[i,j] && (not listOfAllComputersInNet.[j].Infected) && (not (listOfComputersInfectedInThisStep.Contains(listOfAllComputersInNet.[j])))) then
+                            if (rand.Next(1, 100) <= listOfAllComputersInNet.[j].operatingSystem.InfectionProbability) then
                                 listOfAllComputersInNet.[j].Infected <- true
                                 listOfComputersInfectedInThisStep.Add(listOfAllComputersInNet.[j])
 
@@ -36,10 +39,8 @@ type LocalNetwork(newNetOfComp : List<Computer>, mat : bool[,])=
     /// <returns></returns>
     member this.Check() =
            let mutable i = 0;
-           for comp in listOfAllComputersInNet do
-               if (comp.Infected = false) then
-                   i <- i + 1
-           (i = 0)
+           let check = List.filter (fun x -> x.Infected = false) listOfAllComputersInNet
+           (check.Length = 0)
 
     /// <summary>
     /// start virus infection
