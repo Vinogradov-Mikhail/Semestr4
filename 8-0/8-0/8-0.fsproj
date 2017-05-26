@@ -6,14 +6,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ff82e9e3-a814-4e7d-a4d4-c366dbefd56f</ProjectGuid>
+    <ProjectGuid>306c4f17-76db-4c24-9fad-c5732a9d0325</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_5_2</RootNamespace>
-    <AssemblyName>_5_2</AssemblyName>
+    <RootNamespace>_8_0</RootNamespace>
+    <AssemblyName>_8_0</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
-    <Name>5-2</Name>
+    <Name>8-0</Name>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -26,7 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\_5_2.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\_8_0.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\_5_2.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\_8_0.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
@@ -60,8 +60,8 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
-    <Compile Include="Test.fs" />
     <Content Include="packages.config" />
+    <Compile Include="Test.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
