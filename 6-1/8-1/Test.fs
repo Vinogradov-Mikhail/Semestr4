@@ -4,6 +4,7 @@ open Program
 open NUnit.Framework
 open FsUnit
 
+
 [<Test>]
 let ``test with 3 computers``() = 
     let mac = { NameOfOs = "Mac"; InfectionProbability = 10 }
@@ -25,4 +26,8 @@ let ``test with 3 computers``() =
                         { operatingSystem = linux;  Infected = false }
                         { operatingSystem = mac;  Infected = true }]
     let network = new LocalNetwork(addComputers, createMat mat)
+    network.StepOfVirusInfection()
+    let list = List.filter (fun x -> x.Infected = true ) network.CompList
+    (list.Length <> 3) |> should equal true
     network.VirusInfection()
+    network.Check() |> should equal true

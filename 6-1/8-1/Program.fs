@@ -15,6 +15,8 @@ type LocalNetwork(newNetOfComp : list<Computer>, mat : bool[,])=
     let mutable listOfAllComputersInNet = newNetOfComp
     let mutable matrixOfLink = mat
 
+    member this.CompList = listOfAllComputersInNet
+
     member this.StepOfVirusInfection() =
             let listOfComputersInfectedInThisStep = new List<Computer>()
             for i in 0 .. (List.length listOfAllComputersInNet) - 1 do
@@ -38,7 +40,6 @@ type LocalNetwork(newNetOfComp : list<Computer>, mat : bool[,])=
     /// </summary>
     /// <returns></returns>
     member this.Check() =
-           let mutable i = 0;
            let check = List.filter (fun x -> x.Infected = false) listOfAllComputersInNet
            (check.Length = 0)
 
