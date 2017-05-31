@@ -20,7 +20,7 @@ let ``Test threading`` () =
             countdown.Wait()
         }
     Async.Start(asuncfun)
-    Thread.Sleep 100
+    Thread.Sleep 80
     countdown.Signal() |> ignore
-    Thread.Sleep 100
+    Thread.Sleep 80
     counter |> should equal 1
