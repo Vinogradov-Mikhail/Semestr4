@@ -27,13 +27,16 @@ let ``simple delete test``() =
 [<Test>]
 let ``simple iterator test``() =
     let tree = new BinaryTree<int>()
-    tree.Add(1)
     tree.Add(5)
     tree.Add(4)
     tree.Add(2)
+    tree.Add(3)
     let mutable i = 0
+    let mutable list = []
     for x in tree do
+        list <- (x :: list)
         i <- i + 1
     i |> should equal 4
+    list |> should equal [3;2;4;5]
 
         

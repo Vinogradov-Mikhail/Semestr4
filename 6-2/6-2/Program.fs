@@ -98,5 +98,7 @@ type BinaryTree<'a when 'a: comparison>() =
                 else ex right x
         ex binTree x        
 
-    interface IEnumerable with
-       member t.GetEnumerator() = new Enumerator<'a>(binTree) :> IEnumerator
+    interface IEnumerable<'a> with
+       member t.GetEnumerator() = new Enumerator<'a>(binTree) :> IEnumerator<'a>
+       member t.GetEnumerator() = (t :> IEnumerable<'a>).GetEnumerator() :> IEnumerator
+
