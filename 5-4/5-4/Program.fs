@@ -5,7 +5,7 @@ type Term =
     | Abs of string * Term
     | App of Term * Term
 
-let rec betareduction x = 
+let rec betaReduction x = 
     let rec betaApp x y = 
         match x with
         |App(s, p) -> App(betaApp s y, p)
@@ -26,4 +26,4 @@ let rec betareduction x =
     | Var(t) -> Var(t) 
     | Abs(t, s) -> Abs(t, s)
     | App(Var(y), s) -> App(Var(y), s)
-    | App(s, y) -> betareduction (betaApp s y)   
+    | App(s, y) -> betaReduction (betaApp s y)   
