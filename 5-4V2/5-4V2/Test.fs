@@ -18,3 +18,11 @@ let ``Right redex``() = betaReduction (App(Var "x", App(Abs("x", Var("x")), Var 
 
 [<Test>]
 let ``application2``() = betaReduction (App(Abs("s", App(Var "q", Var"s")), Var("y"))) |> should equal (App(Var "q", Var "y"))
+
+[<Test>]
+let ``abstractionWithRedexes``() = 
+    betaReduction (Abs("x", App(Abs("y", Var("y")), Var("t")))) |> should equal (Abs("x", Var "t"))
+
+[<Test>]
+let ``K a b``() = 
+    betaReduction (App(App(Abs("x", Abs("y", Var "x")), Var "a"), Var "b")) |> should equal (Var "a")
