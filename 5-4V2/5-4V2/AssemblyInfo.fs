@@ -1,4 +1,4 @@
-﻿namespace _9_0.AssemblyInfo
+﻿namespace _5_4V2.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // Общие сведения о сборке можно задать с помощью следующего 
 // набора атрибутов. Отредактируйте эти значения атрибутов, чтобы изменить сведения,
 // связанные с этой сборкой.
-[<assembly: AssemblyTitle("9-0")>]
+[<assembly: AssemblyTitle("5-4V2")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("9-0")>]
+[<assembly: AssemblyProduct("5-4V2")>]
 [<assembly: AssemblyCopyright("Copyright ©  2017")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект видим для COM
-[<assembly: Guid("b3c4e615-33d0-4e91-8c86-7c68bb30d99d")>]
+[<assembly: Guid("be175eee-4ef6-4888-a750-fae05281b220")>]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 // 
